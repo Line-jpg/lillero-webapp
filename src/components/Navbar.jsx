@@ -1,11 +1,29 @@
 import { NavLink } from "react-router";
+import camera from "../assets/camera.svg"; 
+import inbox from "../assets/inbox.svg";
+import calendarWeek from "../assets/calendar-week.svg";
+import community from "../assets/users.svg"; 
+import bookmark from "../assets/book-open.svg";
 
 export default function Navbar() {
   return (
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
+      <NavLink to="/">
+        <img src={camera} alt="Home" />
+      </NavLink>
+      <NavLink to="/community">
+        <img src={community} alt="Community" />
+      </NavLink>
+      <NavLink to="/contact">
+        <img src={calendarWeek} alt="Contact" />
+      </NavLink>
+      <NavLink to="/about">
+        <img src={inbox} alt="About" />
+      </NavLink>
+
+      <NavLink to="/bookmarks">
+        <img src={bookmark} alt="Bookmarks" />
+      </NavLink>
     </nav>
   );
 }
