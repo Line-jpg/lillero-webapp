@@ -20,8 +20,10 @@ nav {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
 }
 
@@ -61,6 +63,7 @@ main {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  padding-bottom: 6rem;
 }
 
 main p {
