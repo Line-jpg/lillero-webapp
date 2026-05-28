@@ -11,7 +11,9 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<InboxPage />} />
+        <Route path="/events" element={<EventPage />} />
+        <Route path="/about" element={<EventPage />} />
+        <Route path="/community" element={<OpslagPage />} />
         <Route path="/contact" element={<EventPage />} />
         <Route path="/community" element={<OpslagPage />} />
         <Route path="*" element={<NotFoundPage />} />

@@ -14,7 +14,7 @@ export default function Navbar() {
       <NavLink to="/community">
         <img src={community} alt="Community" />
       </NavLink>
-      <NavLink to="/contact">
+      <NavLink to="/events">
         <img src={calendarWeek} alt="Contact" />
       </NavLink>
       <NavLink to="/about">

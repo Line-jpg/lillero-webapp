@@ -1,9 +1,11 @@
 /* Posts.css */
 
 .posts {
-  max-width: 960px;
+  max-width: 402px;
+  height: auto;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+  background: #ffffff;
   font-family: "Segoe UI", sans-serif;
 }
 
@@ -73,7 +75,7 @@
   line-height: 1.5;
   flex: 1;
   display: -webkit-box;
-   line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
