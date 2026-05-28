@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
-import camera from "../assets/camera.svg"; 
+import camera from "../assets/camera.svg";
 import inbox from "../assets/inbox.svg";
 import calendarWeek from "../assets/calendar-week.svg";
-import community from "../assets/users.svg"; 
+import community from "../assets/users.svg";
 import bookmark from "../assets/book-open.svg";
 
 export default function Navbar() {
