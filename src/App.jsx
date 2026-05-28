@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import OpslagPage from "./pages/OpslagPage";
 import EventPage from "./pages/EventPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import InboxPage from "./pages/InboxPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/about" element={<EventPage />} />
         <Route path="/community" element={<OpslagPage />} />
         <Route path="/contact" element={<EventPage />} />
+        <Route path="/community" element={<OpslagPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Navbar />
