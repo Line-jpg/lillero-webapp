@@ -43,11 +43,20 @@
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease;
+  overflow: hidden;
 }
 
 .post-card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+}
+
+.post-card__image {
+  width: calc(100% + 3rem);
+  margin: -1.25rem -1.5rem 0.5rem -1.5rem;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
 .post-card__title {
@@ -64,7 +73,7 @@
   line-height: 1.5;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
