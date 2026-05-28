@@ -27,6 +27,10 @@ export default function Posts() {
         <div className="posts-grid">
           {posts.map((post) => (
             <article key={post.id} className="post-card">
+              {/* Display image if it exists */}
+              {post.image && (
+                <img src={post.image} alt={post.title} className="post-card__image" />
+              )}
               {/* Adjust field names to match your table columns */}
               <h3 className="post-card__title">{post.title}</h3>
               <p className="post-card__body">{post.content ?? post.body}</p>
