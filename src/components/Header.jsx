@@ -1,12 +1,13 @@
 import { Link } from "react-router";
 import editSolid from "../assets/edit-solid.svg";
 import bars from "../assets/bars.svg";
+import CreatePage from "../pages/CreatePage";
 import "./Header.css";
 
 export default function Header({
   title = "Fælleskab",
   subtitle = "Til dig",
-  editTo = "/create-post",
+  createPostTo = "/create-post",
   menuTo = "/menu",
 }) {
   return (
@@ -19,7 +20,7 @@ export default function Header({
 
         <div className="app-header__actions" aria-label="Header actions">
           <Link
-            to={editTo}
+            to={CreatePage}
             className="app-header__iconButton"
             aria-label="Create new post"
           >
