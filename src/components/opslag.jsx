@@ -2,38 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "./supabaseClient";
 import "../opslag.css";
 
-function formatTimeAgo(createdAt) {
-  if (!createdAt) {
-    return "";
-  }
-
-  const date = new Date(createdAt);
-
-  if (Number.isNaN(date.getTime())) {
-    return "";
-  }
-
-  const diffInMinutes = Math.floor((Date.now() - date.getTime()) / 60000);
-
-  if (diffInMinutes < 1) {
-    return "just now";
-  }
-
-  if (diffInMinutes < 60) {
-    return `${diffInMinutes} min ago`;
-  }
-
-  const diffInHours = Math.floor(diffInMinutes / 60);
-
-  if (diffInHours < 24) {
-    return `${diffInHours} h ago`;
-  }
-
-  const diffInDays = Math.floor(diffInHours / 24);
-  return `${diffInDays} d ago`;
-}
-
-export default function Posts() {
+export default function Posts({ showTitle = true }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +19,7 @@ export default function Posts() {
 
   return (
     <section className="posts">
-      <h2 className="posts-title">Fælleskab</h2>
+      {showTitle ? <h2 className="posts-title">Fælleskab</h2> : null}
 
       {posts.length === 0 ? (
         <p className="posts-empty">No posts found.</p>
@@ -78,9 +47,7 @@ export default function Posts() {
                   ))}
                 </div>
               )}
-              <p className="post-card__meta">
-                {post.time_ago ?? formatTimeAgo(post.created_at)}
-              </p>
+              <p className="post-card__meta">{post.time_ago}</p>
             </article>
           ))}
         </div>
