@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchPostById } from "../components/supabaseClient";
-import Header from "../components/Header";
+import luk from "../assets/luk.svg";
 import "../opslag.css";
 
 export default function PostDetailPage() {
   const { postId } = useParams();
+  const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -23,8 +24,15 @@ export default function PostDetailPage() {
 
   if (!post) {
     return (
-      <main className="posts">
-        <Header subtitle={false} />
+      <main className="posts post-detail-page">
+        <button
+          type="button"
+          className="post-detail-page__backButton"
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+        >
+          <img src={luk} alt="" className="post-detail-page__backIcon" />
+        </button>
         <p className="posts-empty">Post not found.</p>
         <Link to="/community">Back to posts</Link>
       </main>
@@ -32,8 +40,15 @@ export default function PostDetailPage() {
   }
 
   return (
-    <main className="posts">
-      <Header subtitle={false} />
+    <main className="posts post-detail-page">
+      <button
+        type="button"
+        className="post-detail-page__backButton"
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+      >
+        <img src={luk} alt="" className="post-detail-page__backIcon" />
+      </button>
       <article className="post-card post-card--detail">
         <p className="post-card__name">{post.name}</p>
         <p className="post-card__parent_to">{post.parent_to}</p>
