@@ -48,14 +48,23 @@ export default function EventPage() {
               <img src={luk} alt="Luk" />
             </button>
             <div className="modal-content">
-              <input type="text" placeholder="Titel" />
-              <label>Dato</label>
-              <input type="date" />
-              <label>Start tidspunkt</label>
-              <input type="time" />
-              <label>Slut tidspunkt</label>
-              <input type="time" placeholder="Slut tidspunkt" />
-              <input type="text" placeholder="Beskrivelse" />
+              <input className="modal-titel" type="text" placeholder="Titel" />
+              <div className="modal-dato">
+                <label>Dato</label>
+                <input type="date" />
+              </div>
+              <div className="modal-start-tidspunkt">
+                <label>Start tidspunkt</label>
+                <input type="time" />
+              </div>
+              <div className="modal-slut-tidspunkt">
+                <label>Slut tidspunkt</label>
+                <input type="time" placeholder="Slut tidspunkt" />
+              </div>
+              <div>
+                <textarea className="modal-beskrivelse" placeholder="Beskrivelse" />
+              </div>
+              <button className="opret-event-button">Opret begivenhed</button>
             </div>
           </div>
         </div>
