@@ -1,95 +1,114 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const URL = import.meta.env.VITE_SUPABASE_URL;
-const headers = {
-  apikey: import.meta.env.VITE_SUPABASE_APIKEY,
-  "Content-Type": "application/json",
-};
+import { createPost } from "../components/supabaseClient";
 
 export default function CreatePage() {
   const navigate = useNavigate();
-  const [image, setImage] = useState("");
-  const [caption, setCaption] = useState("");
-  const [date, setDate] = useState("");
-  const [location, setLocation] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    profileimagine: "",
+    image: "",
+    title: "",
+    text: "",
+    parent_to: "",
+  });
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
 
-    await fetch(URL, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        image: image.trim(),
-        caption: caption.trim(),
-        date: date.trim(),
-        location: location.trim(),
-      }),
-    });
-
-    navigate("/");
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      await createPost(form);
+      navigate("/community");
+    } catch (err) {
+      console.error("Kunne ikke oprette opslag:", err);
+    }
   }
 
   return (
     <main className="app">
-      <h1 className="page-title">Create Post</h1>
+      <h1 className="page-title">Lav opslag</h1>
       <form className="post-form" onSubmit={handleSubmit}>
         <div className="form-grid">
           <div className="form-field">
-            <label htmlFor="image">Image URL</label>
+            <label htmlFor="name">Navn</label>
+            <input
+              id="name"
+              name="name"
+              placeholder="Dit navn"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="profileimagine">Profilbillede URL</label>
+            <input
+              id="profileimagine"
+              name="profileimagine"
+              placeholder="https://..."
+              value={form.profileimagine}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="parent_to">Forælder til</label>
+            <input
+              id="parent_to"
+              name="parent_to"
+              placeholder="f.eks. Jacob, 9 år"
+              value={form.parent_to}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="title">Titel</label>
+            <input
+              id="title"
+              name="title"
+              placeholder="Overskrift på dit opslag"
+              value={form.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="text">Tekst</label>
+            <textarea
+              id="text"
+              name="text"
+              rows="5"
+              placeholder="Skriv dit opslag her..."
+              value={form.text}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="image">Billede URL (valgfrit)</label>
             <input
               id="image"
               name="image"
               placeholder="https://..."
-              value={image}
-              onChange={(event) => setImage(event.target.value)}
-              required
+              value={form.image}
+              onChange={handleChange}
             />
-            {image && (
-              <img src={image} alt="Preview" className="image-preview" />
+            {form.image && (
+              <img src={form.image} alt="Preview" className="image-preview" />
             )}
           </div>
-
-          <div className="form-field">
-            <label htmlFor="caption">Titel</label>
-            <textarea
-              id="caption"
-              name="caption"
-              rows="4"
-              placeholder="Skriv en titel til dit event..."
-              value={caption}
-              onChange={(event) => setCaption(event.target.value)}
-              required
-            />
-          </div>
-
-          <div className="form-field"></div>
-          <label htmlFor="date">Date</label>
-          <input
-            id="date"
-            name="date"
-            placeholder="Hvornår foregår dit event?"
-            value={date}
-            onChange={(event) => setDate(event.target.value)}
-            required
-          />
-
-          <div className="form-field"></div>
-          <label htmlFor="location">Location</label>
-          <input
-            id="location"
-            name="location"
-            placeholder="Hvor foregår dit event?"
-            value={location}
-            onChange={(event) => setLocation(event.target.value)}
-            required
-          />
         </div>
 
         <div className="form-actions">
           <button type="submit" className="btn btn-primary">
-            Gem event
+            Del opslag
           </button>
         </div>
       </form>

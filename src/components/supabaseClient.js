@@ -55,6 +55,27 @@ export async function fetchPosts() {
   return fetchFromSupabase(url);
 }
 
+export async function createPost(post) {
+  const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_APIKEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_APIKEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify(post),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Supabase request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
 export async function fetchPostById(postId) {
   const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
 
