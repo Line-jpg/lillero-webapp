@@ -4,10 +4,15 @@
   font-weight: 400;
   --primary-grey: #d2d2d2;
   --secondary-grey: #757575;
-  --secondary-purple: #7d4bd5;
-  --primary-purple: #8a38f5;
-  --font-header: "inter, bold, sans-serif";
+  --secondary-purple: #7D4BD5;
+  --primary-purple: #8A38F5;
+  --font-header: bold 2.5rem Inter, sans-serif;
   --font-broedtekst: "inter, regular, sans-serif";
+    header {
+    background: #fff;
+    color: #111; /* or your preferred text color */
+  }  
+
 }
 
 body {

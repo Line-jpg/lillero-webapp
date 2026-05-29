@@ -7,6 +7,24 @@
   font-family: "Segoe UI", sans-serif;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 2px;
+  background-color: #757575;
+}
+
 .events-loading,
 .events-empty {
   color: #94a3b8;
@@ -20,7 +38,6 @@
   color: #0f172a;
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e2e8f0;
 }
 
 /* ── Grid ── */
@@ -74,4 +91,77 @@
   font-size: 0.78rem;
   color: #6366f1; /* purple date to reinforce the event accent */
   margin-top: auto;
+}
+
+.kalenderknap-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: 1rem;
+  top: 7rem;
+}
+
+
+.kalenderknap {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  flex-direction: row;
+}
+
+
+.kalenderknap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#lav-opslag {
+  width: 58px;
+  height: 58px;
+}
+
+.profilbillede {
+  position: absolute;
+  right: 1.5rem;
+  top: 2.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.events-title {
+  font: var(--font-header);
+  position: absolute;
+  left: 1rem;
+}
+
+.kommendedeltager-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 5.4rem;
+}
+
+.kommendedeltager {
+  font: var(--font-broedtekst);
+}
+
+#kommende {
+  color: #9456FF;
+  border-bottom: 2px solid #9456FF;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+#deltager {
+  color: #949494;
 }

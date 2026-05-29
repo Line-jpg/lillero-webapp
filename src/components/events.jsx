@@ -19,7 +19,7 @@ export default function Events() {
 
   return (
     <section className="events">
-      <h2 className="events-title">Events</h2>
+
 
       {events.length === 0 ? (
         <p className="events-empty">No events found.</p>
