@@ -1,0 +1,61 @@
+.app-header {
+  width: 100%;
+  background: #ffffff;
+  color: #0f172a;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem 0.75rem;
+}
+
+.app-header__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.app-header__subtitle {
+  position: relative;
+  width: fit-content;
+  color: #8a5cff;
+  margin-top: -6px;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.app-header__subtitle::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 0rem;
+  background: #8a5cff;
+  border-radius: 999px;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  padding-top: 0.35rem;
+}
+
+.app-header__iconButton {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.app-header__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
