@@ -1,5 +1,5 @@
-async function fetchFromSupabase(url) {
-  const response = await fetch(`${url}?select=*`, {
+async function fetchFromSupabase(url, query = "select=*") {
+  const response = await fetch(`${url}?${query}`, {
     headers: {
       apikey: import.meta.env.VITE_SUPABASE_APIKEY,
       Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_APIKEY}`,
@@ -32,4 +32,15 @@ export async function fetchPosts() {
   }
 
   return fetchFromSupabase(url);
+}
+
+export async function fetchPostById(postId) {
+  const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
+
+  if (!url || !postId) {
+    return null;
+  }
+
+  const [post] = await fetchFromSupabase(url, `id=eq.${postId}&select=*`);
+  return post ?? null;
 }

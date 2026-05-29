@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchPosts } from "./supabaseClient";
 import "../opslag.css";
 
@@ -26,29 +27,36 @@ export default function Posts({ showTitle = true }) {
       ) : (
         <div className="posts-grid">
           {posts.map((post) => (
-            <article key={post.id} className="post-card">
-              <p className="post-card__name">{post.name}</p>
-              <p className="post-card__parent_to">{post.parent_to}</p>
-              {post.image && (
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="post-card__image"
-                />
-              )}
-              <h3 className="post-card__title">{post.title}</h3>
-              <p className="post-card__body">{post.text ?? post.body}</p>
-              {post.show_hashtags && (
-                <div className="tags">
-                  {post.hashtags.map((tag) => (
-                    <span key={tag} className="hashtag">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <p className="post-card__meta">{post.time_ago}</p>
-            </article>
+            <Link
+              key={post.id}
+              to={`/community/${post.id}`}
+              className="post-card-link"
+              aria-label={`Open post ${post.title ?? ""}`}
+            >
+              <article className="post-card">
+                <p className="post-card__name">{post.name}</p>
+                <p className="post-card__parent_to">{post.parent_to}</p>
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="post-card__image"
+                  />
+                )}
+                <h3 className="post-card__title">{post.title}</h3>
+                <p className="post-card__body">{post.text ?? post.body}</p>
+                {post.show_hashtags && Array.isArray(post.hashtags) && (
+                  <div className="tags">
+                    {post.hashtags.map((tag) => (
+                      <span key={tag} className="hashtag">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <p className="post-card__meta">{post.time_ago}</p>
+              </article>
+            </Link>
           ))}
         </div>
       )}

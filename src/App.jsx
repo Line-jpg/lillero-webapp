@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import OpslagPage from "./pages/OpslagPage";
 import EventPage from "./pages/EventPage";
 import CreatePage from "./pages/CreatePage";
+import PostDetailPage from "./pages/PostDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import InboxPage from "./pages/InboxPage";
 
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/events" element={<EventPage />} />
         <Route path="/about" element={<EventPage />} />
         <Route path="/community" element={<OpslagPage />} />
+        <Route path="/community/:postId" element={<PostDetailPage />} />
         <Route path="/contact" element={<EventPage />} />
         <Route path="/community" element={<OpslagPage />} />
         <Route path="*" element={<NotFoundPage />} />
