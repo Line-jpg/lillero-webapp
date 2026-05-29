@@ -148,3 +148,19 @@
   color: #94a3b8;
   margin-top: auto;
 }
+
+.post-card--detail {
+  overflow: visible;
+}
+
+.post-card--detail .post-card__body {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+.post-card--detail .post-card__image {
+  height: auto;
+  max-height: none;
+}
