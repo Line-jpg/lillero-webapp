@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import editSolid from "../assets/edit-solid.svg";
 import bars from "../assets/bars.svg";
 import "./Header.css";
