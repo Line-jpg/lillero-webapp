@@ -193,3 +193,62 @@ header::after {
   display: flex;
   align-items: center;
 }
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.opret-event-button  {
+  display: block !important;
+  width: 100% !important;
+  height: 37px !important;
+  background: #9456FF !important;
+  border-radius: 10px;
+  font: var(--font-broedtekst);
+  color: white;
+}
+
+.modal-titel {
+  font: var(--font-broedtekst);
+  border-radius: 10px;
+  height: 42px;
+}
+
+.modal-dato {
+  font: var(--font-broedtekst);
+  border-radius: 10px;
+  height: 42px;
+}
+
+.modal-start-tidspunkt {
+  font: var(--font-broedtekst);
+  border-radius: 10px;
+  height: 42px;
+}
+
+.modal-slut-tidspunkt {
+  font: var(--font-broedtekst);
+  border-radius: 10px;
+  height: 42px;
+}
+
+
+
+.modal-beskrivelse {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  font: var(--font-broedtekst);
+  box-sizing: border-box;
+  resize: none;
+  background: white;
+  align-items: stretch;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
