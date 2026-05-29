@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import camera from "../assets/camera.svg";
 import inbox from "../assets/inbox.svg";
 import calendarWeek from "../assets/calendar-week.svg";
