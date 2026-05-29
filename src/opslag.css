@@ -1,12 +1,23 @@
 /* Posts.css */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --primary-grey: #d2d2d2;
+  --secondary-grey: #757575;
+  --secondary-purple: #7d4bd5;
+  --primary-purple: #8a38f5;
+  --font-header: "inter, bold, sans-serif";
+  --font-broedtekst: "inter, regular, sans-serif";
+}
 
 .posts {
   max-width: 402px;
   height: auto;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background: #ffffff;
-  font-family: "Segoe UI", sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .posts-loading,
@@ -35,7 +46,7 @@
 /* ── Card ── */
 .post-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #737373;
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   display: flex;
@@ -46,11 +57,6 @@
     box-shadow 0.2s ease,
     transform 0.2s ease;
   overflow: hidden;
-}
-
-.post-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
 }
 
 .post-card__image {
@@ -75,7 +81,7 @@
   line-height: 1.5;
   flex: 1;
   display: -webkit-box;
-  line-clamp: 3;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -2,13 +2,12 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  --primary-grey: #D2D2D2;
+  --primary-grey: #d2d2d2;
   --secondary-grey: #757575;
-  --secondary-purple: #7D4BD5;
-  --primary-purple: #8A38F5;
+  --secondary-purple: #7d4bd5;
+  --primary-purple: #8a38f5;
   --font-header: "inter, bold, sans-serif";
   --font-broedtekst: "inter, regular, sans-serif";
-  
 }
 
 body {
@@ -30,7 +29,6 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Navigation */
