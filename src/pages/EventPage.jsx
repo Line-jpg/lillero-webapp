@@ -5,8 +5,29 @@ import lavOpslag from "../assets/lav-opslag.svg";
 import kalender from "../assets/kalender.svg";
 import mand from "../assets/mennesker/lars-larsen.svg";
 import luk from "../assets/luk.svg";
+import { createEvent } from "../components/supabaseClient";
+
 export default function EventPage() {
   const [showCreatePost, setShowCreatePost] = useState(false);
+  const [form, setForm] = useState({ title: "", date: "", start_time: "", text: "" });
+
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit() {
+    try {
+      await createEvent({
+        title: form.title,
+        time: `${form.date}T${form.start_time}:00`,
+        text: form.text,
+      });
+      setShowCreatePost(false);
+      setForm({ title: "", date: "", start_time: "", text: "" });
+    } catch (err) {
+      console.error("Kunne ikke oprette event:", err);
+    }
+  }
 
   return (
     <>
@@ -48,23 +69,23 @@ export default function EventPage() {
               <img src={luk} alt="Luk" />
             </button>
             <div className="modal-content">
-              <input className="modal-titel" type="text" placeholder="Titel" />
+              <input className="modal-titel" type="text" placeholder="Titel" name="title" value={form.title} onChange={handleChange} />
               <div className="modal-dato">
                 <label>Dato</label>
-                <input type="date" />
+                <input type="date" name="date" value={form.date} onChange={handleChange} />
               </div>
               <div className="modal-start-tidspunkt">
                 <label>Start tidspunkt</label>
-                <input type="time" />
+                <input type="time" name="start_time" value={form.start_time} onChange={handleChange} />
               </div>
               <div className="modal-slut-tidspunkt">
                 <label>Slut tidspunkt</label>
                 <input type="time" placeholder="Slut tidspunkt" />
               </div>
               <div>
-                <textarea className="modal-beskrivelse" placeholder="Beskrivelse" />
+                <textarea className="modal-beskrivelse" placeholder="Beskrivelse" name="text" value={form.text} onChange={handleChange} />
               </div>
-              <button className="opret-event-button">Opret begivenhed</button>
+              <button className="opret-event-button" onClick={handleSubmit}>Opret begivenhed</button>
             </div>
           </div>
         </div>
