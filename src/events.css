@@ -104,7 +104,6 @@ header::after {
   top: 7rem;
 }
 
-
 .kalenderknap {
   background: none;
   border: none;
@@ -115,7 +114,6 @@ header::after {
 
   flex-direction: row;
 }
-
 
 .kalenderknap img {
   width: 100%;
@@ -156,8 +154,8 @@ header::after {
 }
 
 #kommende {
-  color: #9456FF;
-  border-bottom: 2px solid #9456FF;
+  color: #9456ff;
+  border-bottom: 2px solid #9456ff;
   padding-bottom: 4px;
   display: inline-block;
 }

@@ -17,7 +17,7 @@
   margin: 0 auto;
   padding: 0.5rem 1.5rem;
   background: #ffffff;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font: var(--font-header);
 }
 
 .posts-loading,
@@ -60,21 +60,34 @@
 }
 
 .post-card__image {
-  width: calc(100% + 3rem);
-  margin: -1.25rem -1.5rem 0.5rem -1.5rem;
+  width: 100%;
+  margin: 0.25rem 0 0.5rem;
   height: 200px;
   object-fit: cover;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 
 .post-card__title {
-  font-size: 1.05rem;
+  font: (var(--font-header));
   font-weight: 600;
   margin: 0;
   color: #0f172a;
 }
 
+.post-card__name {
+  font-size: 1rem;
+  color: #000000;
+  margin: 0;
+}
+
+.post-card__parent_to {
+  font-size: 0.9rem;
+  color: #475569;
+  margin: -0.5rem 0 0;
+}
+
 .post-card__body {
+  font: var(--font-broedtekst);
   font-size: 0.9rem;
   color: #475569;
   margin: 0;

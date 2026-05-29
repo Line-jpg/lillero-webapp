@@ -2,6 +2,37 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "./supabaseClient";
 import "../opslag.css";
 
+function formatTimeAgo(createdAt) {
+  if (!createdAt) {
+    return "";
+  }
+
+  const date = new Date(createdAt);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  const diffInMinutes = Math.floor((Date.now() - date.getTime()) / 60000);
+
+  if (diffInMinutes < 1) {
+    return "just now";
+  }
+
+  if (diffInMinutes < 60) {
+    return `${diffInMinutes} min ago`;
+  }
+
+  const diffInHours = Math.floor(diffInMinutes / 60);
+
+  if (diffInHours < 24) {
+    return `${diffInHours} h ago`;
+  }
+
+  const diffInDays = Math.floor(diffInHours / 24);
+  return `${diffInDays} d ago`;
+}
+
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +58,8 @@ export default function Posts() {
         <div className="posts-grid">
           {posts.map((post) => (
             <article key={post.id} className="post-card">
-              {/* Display image if it exists */}
+              <p className="post-card__name">{post.name}</p>
+              <p className="post-card__parent_to">{post.parent_to}</p>
               {post.image && (
                 <img
                   src={post.image}
@@ -35,8 +67,6 @@ export default function Posts() {
                   className="post-card__image"
                 />
               )}
-              {/* Adjust field names to match your table columns */}
-              <p className="post-card__name">{post.name}</p>
               <h3 className="post-card__title">{post.title}</h3>
               <p className="post-card__body">{post.text ?? post.body}</p>
               {post.show_hashtags && (
@@ -48,9 +78,9 @@ export default function Posts() {
                   ))}
                 </div>
               )}
-              <time className="post-card__meta">
-                {new Date(post.created_at).toLocaleDateString()}
-              </time>
+              <p className="post-card__meta">
+                {post.time_ago ?? formatTimeAgo(post.created_at)}
+              </p>
             </article>
           ))}
         </div>
