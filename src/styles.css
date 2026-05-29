@@ -2,6 +2,13 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --primary-grey: #D2D2D2;
+  --secondary-grey: #757575;
+  --secondary-purple: #7D4BD5;
+  --primary-purple: #8A38F5;
+  --font-header: "inter, bold, sans-serif";
+  --font-broedtekst: "inter, regular, sans-serif";
+  
 }
 
 body {
