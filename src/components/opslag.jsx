@@ -1,7 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import lottie from "lottie-web";
 import { fetchPosts } from "./supabaseClient";
+import loadingAnimation from "../assets/loading.json";
 import "../opslag.css";
+
+function LoadingAnimation() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: containerRef.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: loadingAnimation,
+    });
+    return () => anim.destroy();
+  }, []);
+
+  return <div ref={containerRef} className="posts-loading" />;
+}
 
 export default function Posts({ showTitle = true }) {
   const [posts, setPosts] = useState([]);
@@ -16,7 +35,7 @@ export default function Posts({ showTitle = true }) {
     load();
   }, []);
 
-  if (loading) return <p className="posts-loading">Loading posts...</p>;
+  if (loading) return <LoadingAnimation />;
 
   return (
     <section className="posts">

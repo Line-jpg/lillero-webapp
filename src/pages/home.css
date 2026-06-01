@@ -1,0 +1,271 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 402px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding-bottom: calc(1.5rem + 72px);
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+/* ── Header ── */
+.home__header {
+  position: relative;
+  padding: 2rem 1.5rem 1.25rem;
+  /* right padding leaves room for avatar */
+  padding-right: calc(1.5rem + 64px + 0.75rem);
+}
+
+.home__date {
+  font-family: Inter, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+}
+
+.home__greeting {
+  font-family: Inter, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.home__avatar {
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ── Photo card ── */
+.home__photo-card {
+  margin: 0.5rem 1.5rem 0;
+  border-radius: 20px;
+  background: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1.5rem;
+}
+
+.home__camera-icon {
+  width: 72px;
+  height: 72px;
+  opacity: 0.4;
+}
+
+.home__photo-label {
+  font-family: Inter, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Divider ── */
+.home__divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.5rem 1.5rem 0;
+}
+
+/* ── Meals header ── */
+.home__meals-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.home__meals-title {
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.home__meals-link {
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+/* ── Bottom section (empty state + illustration + button) ── */
+.home__bottom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1.5rem 0;
+  gap: 0;
+}
+
+.home__empty-text {
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-align: center;
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+/* Open-box flaps — bottom hidden behind scan button */
+.home__illustration {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 60%;
+  height: 90px;
+  margin-bottom: -28px;
+  flex-shrink: 0;
+}
+
+.home__flap {
+  flex: 1;
+  background: #d1d5db;
+}
+
+.home__flap--left {
+  clip-path: polygon(0% 4%, 100% 28%, 100% 100%, 0% 100%);
+  border-radius: 4px 0 0 0;
+}
+
+.home__flap--right {
+  clip-path: polygon(0% 28%, 100% 4%, 100% 100%, 0% 100%);
+  border-radius: 0 4px 0 0;
+}
+
+/* ── Scan bar — floats above navbar ── */
+.home__scan-bar {
+  position: fixed;
+  bottom: calc(72px + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: calc(402px - 3rem);
+  z-index: 50;
+}
+
+.home__scan-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+.home__scan-icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+/* ── Food image (scanned state) ── */
+.home__food-image-wrap {
+  position: relative;
+  margin: 0 1.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+}
+
+.home__food-label {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 1rem;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+  width: calc(100% - 1rem);
+  padding: 1.5rem 0 0;
+  margin-left: -1rem;
+  padding-left: 1rem;
+}
+
+/* ── Meal list ── */
+.home__meal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0 1.5rem calc(72px + 4rem);
+}
+
+.home__meal-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.home__meal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.home__meal-name {
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+
+.home__meal-meta {
+  font-family: Inter, sans-serif;
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.home__meal-kul {
+  font-family: Inter, sans-serif;
+  font-size: 0.85rem;
+  color: #7c3aed;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+}
+
+.home__meal-kul strong {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
