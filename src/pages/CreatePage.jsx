@@ -41,111 +41,46 @@ export default function CreatePage() {
   }
 
   return (
-    <form className="create-post" onSubmit={handleSubmit}>
-      <div className="create-post__topbar">
-        <button type="button" className="create-post__topbar-btn" onClick={() => navigate(-1)}>
-          <img src={luk} alt="Luk" />
-        </button>
-        <button type="button" className="create-post__topbar-btn">
-          <span>• • •</span>
-        </button>
-      </div>
-
-      <div className="create-post__profile">
-        <div className="create-post__avatar-wrapper">
-          <label htmlFor="profileFile">
-            {profileFile ? (
-              <img
-                src={URL.createObjectURL(profileFile)}
-                alt="Profilbillede"
-                className="create-post__avatar"
-              />
-            ) : (
-              <div className="create-post__avatar-placeholder">
-                <img src={camera} alt="Upload profilbillede" />
-              </div>
-            )}
-          </label>
+    <main className="app">
+      <form className="post-form" onSubmit={handleSubmit}>
+        <div className="form-field">
+          <label htmlFor="title">Titel</label>
           <input
-            id="profileFile"
-            type="file"
-            accept="image/*"
-            className="create-post__avatar-input"
-            onChange={(e) => setProfileFile(e.target.files[0])}
-          />
-        </div>
-        <div className="create-post__profile-fields">
-          <input
-            className="create-post__name-input"
-            name="name"
-            placeholder="Dit navn"
-            value={form.name}
+            id="title"
+            name="title"
+            placeholder="Overskrift på dit opslag"
+            value={form.title}
             onChange={handleChange}
             required
           />
-          <input
-            className="create-post__parent-input"
-            name="parent_to"
-            placeholder="Far/Mor til..."
-            value={form.parent_to}
+        </div>
+
+        <div className="form-field">
+          <label htmlFor="text">Tekst</label>
+          <textarea
+            id="text"
+            name="text"
+            rows="5"
+            placeholder="Skriv dit opslag her..."
+            value={form.text}
             onChange={handleChange}
+            required
           />
         </div>
-      </div>
 
-      <div className="create-post__body">
-        <input
-          className="create-post__title-input"
-          name="title"
-          placeholder="Titel"
-          value={form.title}
-          onChange={handleChange}
-          required
-        />
-        <textarea
-          className="create-post__text-input"
-          name="text"
-          placeholder="Tekst..."
-          value={form.text}
-          onChange={handleChange}
-          required
-        />
-        {imageFile && (
-          <img
-            src={URL.createObjectURL(imageFile)}
-            alt="Preview"
-            className="create-post__image-preview"
-          />
-        )}
-      </div>
-
-      <div className="create-post__toolbar">
-        <label htmlFor="imageFile" className="create-post__image-btn">
-          <img src={camera} alt="Tilføj billede" />
-        </label>
-        <input
-          id="imageFile"
-          type="file"
-          accept="image/*"
-          className="create-post__image-file"
-          onChange={(e) => setImageFile(e.target.files[0])}
-        />
-      </div>
-
-      <div className="create-post__anonym">
-        <span className="create-post__anonym-label">Vær anonym</span>
-        <label className="create-post__toggle">
+        <div className="form-field">
+          <label htmlFor="image">Billede URL (valgfrit)</label>
           <input
-            type="checkbox"
-            checked={anonym}
-            onChange={(e) => setAnonym(e.target.checked)}
+            id="image"
+            name="image"
+            placeholder="https://..."
+            value={form.image}
+            onChange={handleChange}
           />
-          <span className="create-post__toggle-slider" />
-        </label>
-        <button type="button" className="create-post__info-btn">i</button>
-      </div>
-
-      {error && <p className="create-post__error">{error}</p>}
+          {form.image && (
+            <img src={form.image} alt="Preview" className="image-preview" />
+          )}
+        </div>
 
       <div className="create-post__footer">
         <button type="button" className="create-post__groups-btn">
