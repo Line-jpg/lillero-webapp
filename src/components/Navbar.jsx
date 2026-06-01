@@ -17,7 +17,7 @@ export default function Navbar() {
       <NavLink to="/events">
         <img src={calendarWeek} alt="Contact" />
       </NavLink>
-      <NavLink to="/about">
+      <NavLink to="/inbox">
         <img src={inbox} alt="About" />
       </NavLink>
 

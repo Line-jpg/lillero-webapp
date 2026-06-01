@@ -11,6 +11,12 @@
   --font-broedtekst: "inter, regular, sans-serif";
 }
 
+.posts-loading {
+  width: 160px;
+  margin: 4rem auto;
+  display: block;
+}
+
 .posts {
   width: 100%;
   max-width: 402px;

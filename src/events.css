@@ -25,6 +25,12 @@ header::after {
   background-color: #aeaeae;
 }
 
+.events-loading-animation {
+  width: 160px;
+  margin: 4rem auto;
+  display: block;
+}
+
 .events-loading,
 .events-empty {
   color: #94a3b8;

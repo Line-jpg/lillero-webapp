@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../components/supabaseClient";
+import { createPost, uploadImage } from "../components/supabaseClient";
+import luk from "../assets/luk.svg";
+import camera from "../assets/camera.svg";
+import "./create.css";
 
 export default function CreatePage() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    name: "",
-    profileimagine: "",
-    image: "",
-    title: "",
-    text: "",
-    parent_to: "",
-  });
+  const [form, setForm] = useState({ name: "", parent_to: "", title: "", text: "" });
+  const [profileFile, setProfileFile] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [anonym, setAnonym] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -19,11 +20,23 @@ export default function CreatePage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setSubmitting(true);
+    setError(null);
     try {
-      await createPost(form);
+      const post = { ...form };
+      if (profileFile) {
+        try { post.profileimagine = await uploadImage(profileFile); } catch {}
+      }
+      if (imageFile) {
+        try { post.image = await uploadImage(imageFile); } catch {}
+      }
+      await createPost(post);
       navigate("/community");
     } catch (err) {
       console.error("Kunne ikke oprette opslag:", err);
+      setError("Noget gik galt — prøv igen.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -69,12 +82,14 @@ export default function CreatePage() {
           )}
         </div>
 
-        <div className="form-actions">
-          <button type="submit" className="btn btn-primary">
-            Del opslag
-          </button>
-        </div>
-      </form>
-    </main>
+      <div className="create-post__footer">
+        <button type="button" className="create-post__groups-btn">
+          + Tilføj grupper
+        </button>
+        <button type="submit" className="create-post__submit-btn" disabled={submitting}>
+          {submitting ? "Uploader..." : "Læg op"}
+        </button>
+      </div>
+    </form>
   );
 }

@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/create-post" element={<CreatePage />} />
         <Route path="/events" element={<EventPage />} />
-        <Route path="/about" element={<EventPage />} />
+        <Route path="/inbox" element={<InboxPage />} />
         <Route path="/community" element={<OpslagPage />} />
         <Route path="/community/:postId" element={<PostDetailPage />} />
         <Route path="/contact" element={<EventPage />} />

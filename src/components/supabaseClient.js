@@ -55,6 +55,27 @@ export async function fetchPosts() {
   return fetchFromSupabase(url);
 }
 
+export async function uploadImage(file) {
+  const storageUrl = import.meta.env.VITE_SUPABASE_STORAGE_URL;
+  const fileName = `${Date.now()}-${file.name}`;
+
+  const response = await fetch(`${storageUrl}/images/${fileName}`, {
+    method: "POST",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_APIKEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_APIKEY}`,
+      "Content-Type": file.type,
+    },
+    body: file,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Upload failed: ${response.status}`);
+  }
+
+  return `${storageUrl}/public/images/${fileName}`;
+}
+
 export async function createPost(post) {
   const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
 
