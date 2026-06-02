@@ -15,6 +15,32 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+.create-post__topbar-title {
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+
+.create-post__topbar-dots {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #0f172a;
+}
+
+.create-post__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
 .create-post__topbar-btn {
   background: transparent;
   border: none;
