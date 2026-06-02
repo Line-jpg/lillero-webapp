@@ -20,11 +20,9 @@
 .posts {
   width: 100%;
   max-width: 402px;
-  height: auto;
   margin: 0 auto;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem calc(72px + 1.5rem);
   background: #ffffff;
-  font: var(--font-header);
   box-sizing: border-box;
 }
 
@@ -153,6 +151,24 @@
   font-size: 0.78rem;
   color: #94a3b8;
   margin-top: auto;
+}
+
+.post-detail-page__deleteButton {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  background: transparent;
+  border: 1.5px solid #ef4444;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.post-detail-page__deleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .post-card--detail {

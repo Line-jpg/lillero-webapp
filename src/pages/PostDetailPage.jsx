@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { fetchPostById } from "../components/supabaseClient";
+import { fetchPostById, deletePost } from "../components/supabaseClient";
 import luk from "../assets/luk.svg";
 import "../opslag.css";
 
@@ -9,6 +9,19 @@ export default function PostDetailPage() {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [deleting, setDeleting] = useState(false);
+
+  async function handleDelete() {
+    if (!window.confirm("Er du sikker på, at du vil slette dette opslag?")) return;
+    setDeleting(true);
+    try {
+      await deletePost(postId);
+      navigate("/community");
+    } catch (err) {
+      console.error("Kunne ikke slette opslag:", err);
+      setDeleting(false);
+    }
+  }
 
   useEffect(() => {
     async function load() {
@@ -67,6 +80,14 @@ export default function PostDetailPage() {
           </div>
         )}
         <p className="post-card__meta">{post.time_ago}</p>
+        <button
+          type="button"
+          className="post-detail-page__deleteButton"
+          onClick={handleDelete}
+          disabled={deleting}
+        >
+          {deleting ? "Sletter..." : "Slet opslag"}
+        </button>
       </article>
     </main>
   );

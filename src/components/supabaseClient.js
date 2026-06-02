@@ -97,6 +97,22 @@ export async function createPost(post) {
   return response.json();
 }
 
+export async function deletePost(postId) {
+  const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
+
+  const response = await fetch(`${url}?id=eq.${postId}`, {
+    method: "DELETE",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_APIKEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_APIKEY}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Delete failed: ${response.status}`);
+  }
+}
+
 export async function fetchPostById(postId) {
   const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
 
