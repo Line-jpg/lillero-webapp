@@ -153,9 +153,14 @@
   margin-top: auto;
 }
 
-.post-detail-page__deleteButton {
-  align-self: flex-start;
+.post-detail-page__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 0.5rem;
+}
+
+.post-detail-page__deleteButton {
   background: transparent;
   border: 1.5px solid #ef4444;
   border-radius: 999px;
@@ -171,7 +176,64 @@
   cursor: not-allowed;
 }
 
-.post-card--detail {
+.post-detail-page__editButton {
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.post-detail-page__editButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.post-detail-page__cancelButton {
+  background: transparent;
+  border: 1.5px solid #94a3b8;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.post-detail-page__editTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.post-detail-page__editBody {
+  font-size: 0.9rem;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  outline: none;
+}
+
+.post-card.post-card--detail {
   overflow: visible;
 }
 

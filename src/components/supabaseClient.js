@@ -97,6 +97,28 @@ export async function createPost(post) {
   return response.json();
 }
 
+export async function updatePost(postId, updates) {
+  const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
+
+  const response = await fetch(`${url}?id=eq.${postId}`, {
+    method: "PATCH",
+    headers: {
+      apikey: import.meta.env.VITE_SUPABASE_APIKEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_APIKEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=representation",
+    },
+    body: JSON.stringify(updates),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Update failed: ${response.status}`);
+  }
+
+  const [updated] = await response.json();
+  return updated;
+}
+
 export async function deletePost(postId) {
   const url = import.meta.env.VITE_SUPABASE_OPSLAG_URL;
 
