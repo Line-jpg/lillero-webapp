@@ -8,17 +8,22 @@ import luk from "../assets/luk.svg";
 import { createEvent } from "../components/supabaseClient";
 
 export default function EventPage() {
+  // Styrer om opret-event-modalen er synlig
   const [showCreatePost, setShowCreatePost] = useState(false);
+  // Formularens feltværdier samlet i et objekt
   const [form, setForm] = useState({ title: "", date: "", start_time: "", text: "" });
 
+  // Opdaterer det felt i formen som brugeren skriver i
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
+  // Sender eventet til Supabase og nulstiller formularen hvis oprettelsen lykkes
   async function handleSubmit() {
     try {
       await createEvent({
         title: form.title,
+        // Samler dato og tid til ISO 8601-format som Supabase forventer
         time: `${form.date}T${form.start_time}:00`,
         text: form.text,
       });
@@ -62,6 +67,7 @@ export default function EventPage() {
 
       <Events />
 
+      {/* Modal til oprettelse af event, vises kun når showCreatePost er true */}
       {showCreatePost && (
         <div className="modal-overlay">
           <div className="modal">
