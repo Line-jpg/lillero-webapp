@@ -5,6 +5,7 @@ import { fetchPosts } from "./supabaseClient";
 import loadingAnimation from "../assets/loading.json";
 import "../opslag.css";
 
+// Viser en Lottie-animation mens opslag hentes fra Supabase
 function LoadingAnimation() {
   const containerRef = useRef(null);
 
@@ -16,6 +17,7 @@ function LoadingAnimation() {
       autoplay: true,
       animationData: loadingAnimation,
     });
+    // Ryd op i animationen når komponenten unmountes
     return () => anim.destroy();
   }, []);
 
@@ -26,6 +28,7 @@ export default function Posts({ showTitle = true }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Henter opslag fra Supabase når komponenten mountes
   useEffect(() => {
     async function load() {
       const data = await fetchPosts();
@@ -55,6 +58,7 @@ export default function Posts({ showTitle = true }) {
               <article className="post-card">
                 <p className="post-card__name">{post.name}</p>
                 <p className="post-card__parent_to">{post.parent_to}</p>
+                {/* Billede vises kun hvis opslaget har et vedhæftet billede */}
                 {post.image && (
                   <img
                     src={post.image}
@@ -63,7 +67,9 @@ export default function Posts({ showTitle = true }) {
                   />
                 )}
                 <h3 className="post-card__title">{post.title}</h3>
+                {/* Understøtter både `text` og `body` som feltnavn */}
                 <p className="post-card__body">{post.text ?? post.body}</p>
+                {/* Hashtags vises kun hvis show_hashtags er sat og listen ikke er tom */}
                 {post.show_hashtags && Array.isArray(post.hashtags) && (
                   <div className="tags">
                     {post.hashtags.map((tag) => (
