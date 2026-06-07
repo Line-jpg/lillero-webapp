@@ -33,7 +33,11 @@ export default function CreatePage() {
     try {
       const post = { ...form };
       if (imageFile) {
-        try { post.image = await uploadImage(imageFile); } catch {}
+        try {
+          post.image = await uploadImage(imageFile);
+        } catch {
+          /* empty */
+        }
       }
       await createPost(post);
       navigate("/community");
@@ -57,8 +61,14 @@ export default function CreatePage() {
         >
           <img src={luk} alt="" />
         </button>
-        <span className="create-post__topbar-title">Diabetes Foreningen - Aalborg ku...</span>
-        <button type="button" className="create-post__topbar-btn" aria-label="Mere">
+        <span className="create-post__topbar-title">
+          Diabetes Foreningen - Aalborg ku...
+        </span>
+        <button
+          type="button"
+          className="create-post__topbar-btn"
+          aria-label="Mere"
+        >
           <span className="create-post__topbar-dots">···</span>
         </button>
       </div>
@@ -68,7 +78,9 @@ export default function CreatePage() {
         <div className="create-post__profile">
           <img src={avatar} alt="Profil" className="create-post__avatar" />
           <div className="create-post__profile-fields">
-            <span className="create-post__name-input">Henrik Sejr Jacobsen</span>
+            <span className="create-post__name-input">
+              Henrik Sejr Jacobsen
+            </span>
             <span className="create-post__parent-input">Far til Jacob</span>
           </div>
         </div>
@@ -92,7 +104,11 @@ export default function CreatePage() {
             required
           />
           {imagePreview && (
-            <img src={imagePreview} alt="Preview" className="create-post__image-preview" />
+            <img
+              src={imagePreview}
+              alt="Preview"
+              className="create-post__image-preview"
+            />
           )}
         </div>
 
@@ -122,7 +138,13 @@ export default function CreatePage() {
             />
             <span className="create-post__toggle-slider" />
           </label>
-          <button type="button" className="create-post__info-btn" aria-label="Info">i</button>
+          <button
+            type="button"
+            className="create-post__info-btn"
+            aria-label="Info"
+          >
+            i
+          </button>
         </div>
 
         {/* Footer */}
@@ -130,7 +152,11 @@ export default function CreatePage() {
           <button type="button" className="create-post__groups-btn">
             + Tilføj grupper
           </button>
-          <button type="submit" className="create-post__submit-btn" disabled={submitting}>
+          <button
+            type="submit"
+            className="create-post__submit-btn"
+            disabled={submitting}
+          >
             {submitting ? "Uploader..." : "Læg op"}
           </button>
         </div>
